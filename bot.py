@@ -11,6 +11,7 @@ import os
 
 API_TOKEN = os.environ.get("API_TOKEN", "")
 open_weather_token = os.environ.get("WEATHER_API_TOKEN", "")
+CLIENT_ID = os.environ.get("CLIENT_ID", "")
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
