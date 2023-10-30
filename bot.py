@@ -3,6 +3,8 @@ import logging
 import requests
 import datetime
 
+from random import randint
+
 from aiogram import Bot, Dispatcher, executor, types
 
 import os
@@ -88,11 +90,11 @@ async def get_weather(message: types.Message):
     elif 'красная панда' in text:
         try:
             # making a GET request to the endpoint.
-            resp = requests.get("https://some-random-api.ml/img/red_panda")
+            resp = requests.get("https://api.unsplash.com/search/photos?client_id=9Imc6gbNTRGeoBBWXFuXhzfJmrTUHpzWv9XOqMjezv0&query=red_panda&order_by=relevant&page=" + str(random.randint(1,100)) + "&per_page=1")
             # checking if resp has a healthy status code.
             if 300 > resp.status_code >= 200:
                 content = resp.json()  # We have a dict now.
-                photo = content['link']
+                photo = content['results'][0]['urls']['regular']
             else:
                 content = f"Recieved a bad status code of {resp.status_code}."
             await bot.send_photo(message.chat.id, photo=photo)
