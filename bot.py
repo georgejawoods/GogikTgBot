@@ -3,7 +3,7 @@ import logging
 import requests
 import datetime
 
-from random import randint
+import random
 
 from aiogram import Bot, Dispatcher, executor, types
 
