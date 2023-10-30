@@ -90,7 +90,7 @@ async def get_weather(message: types.Message):
     elif 'красная панда' in text:
         try:
             # making a GET request to the endpoint.
-            resp = requests.get(f"https://api.unsplash.com/search/photos?client_id={CLIENT_ID}&query=red-panda&order_by=relevant&page={str(random.randint(1,50))}&per_page=1")
+            resp = requests.get(f"https://api.unsplash.com/search/photos?client_id={CLIENT_ID}&query=red-panda&order_by=relevant&page={str(random.randint(1,100))}&per_page=1")
             # checking if resp has a healthy status code.
             content = resp.json()  # We have a dict now.
             photo = content['results'][0]['urls']['regular']
