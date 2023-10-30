@@ -1,7 +1,10 @@
 import requests
 import datetime
 from pprint import pprint
-from config import open_weather_token
+
+import os
+open_weather_token = os.environ.get("WEATHER_API_TOKEN", "")
+
 def Get_Weather():
 
     code_to_smile = {
