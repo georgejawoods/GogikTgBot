@@ -90,13 +90,10 @@ async def get_weather(message: types.Message):
     elif 'красная панда' in text:
         try:
             # making a GET request to the endpoint.
-            resp = requests.get("https://api.unsplash.com/search/photos?client_id=9Imc6gbNTRGeoBBWXFuXhzfJmrTUHpzWv9XOqMjezv0&query=red_panda&order_by=relevant&page=" + str(random.randint(1,100)) + "&per_page=1")
+            resp = requests.get(f"https://api.unsplash.com/search/photos?client_id={CLIENT_ID}&query=red_panda&order_by=relevant&page={str(random.randint(1,100))}&per_page=1")
             # checking if resp has a healthy status code.
-            if 300 > resp.status_code >= 200:
-                content = resp.json()  # We have a dict now.
-                photo = content['results'][0]['urls']['regular']
-            else:
-                content = f"Recieved a bad status code of {resp.status_code}."
+            content = resp.json()  # We have a dict now.
+            photo = content['results'][0]['urls']['regular']
             await bot.send_photo(message.chat.id, photo=photo)
         except:
             await message.reply('Что-то пошло не так')
